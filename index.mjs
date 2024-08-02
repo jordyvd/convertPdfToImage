@@ -16,13 +16,7 @@ if (!fs.existsSync(pathInput)) {
 
 // fs.writeFileSync(pdfPath, pdfBuffer);
 
-const pdfImage = new PDFImage(pdfPath, {
-    combinedImage: false,
-    convertOptions: {
-        '-quality': '100',
-        '-resize': '200%'
-    }
-});
+const pdfImage = new PDFImage(pdfPath);
 
 const outDir = __dirname + '/output';
 
