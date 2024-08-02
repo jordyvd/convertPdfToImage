@@ -33,7 +33,7 @@ if (!fs.existsSync(outDir)) {
 pdfImage.convertFile()
     .then(function (imagePaths) {
         imagePaths.forEach(function (imagePath, index) {
-            const outputPath = `${outDir}/page-${index + 1}.png`;
+            const outputPath = `${outDir}/pagesasas-${index + 1}.png`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`${outputPath}`); // path
         });
