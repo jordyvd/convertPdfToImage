@@ -5,7 +5,7 @@ const pdfBase64 = "JVBERi0xLjcKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZwovT3V0bGluZXMgM
 
 // Decodificar base64 y guardar como PDF
 const pdfBuffer = Buffer.from(pdfBase64, 'base64');
-const pdfPath = './input.pdf';
+const pdfPath = './input/input.pdf';
 fs.writeFileSync(pdfPath, pdfBuffer);
 let out_dir = './output';
 
