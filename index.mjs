@@ -21,7 +21,7 @@ if (!fs.existsSync(pathInput)) {
 const pdfImage = new PDFImage(pdfPath, {
     combinedImage: false,
     convertOptions: {
-       '-density': '300' 
+        "-quality": "1050"
     }
 });
 
