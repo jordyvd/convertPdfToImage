@@ -1,4 +1,4 @@
-// import PDFPoppler from 'pdf-poppler';
+import PDFPoppler from 'pdf-poppler';
 import fs from 'fs';
 
 console.log("COMANDO");
