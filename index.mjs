@@ -8,8 +8,6 @@ const pdfBase64 = "JVBERi0xLjcKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZwovT3V0bGluZXMgM
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
 
-console.log(`La ruta del directorio actual es: ${__dirname}`);
-
 const pdfBuffer = Buffer.from(pdfBase64, 'base64');
 const pathInput = __dirname + 'input';
 
@@ -41,8 +39,6 @@ pdfImage.convertFile()
             const outputPath = `${outDir}/page-${index + 1}.png`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`Página ${index + 1} convertida a imagen: ${outputPath}`);
-
-            return outputPath;
         });
     })
     .catch(function (error) {
