@@ -5,6 +5,7 @@ import { time } from 'console';
 
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
+//const __dirname = './'
 
 // const pdfBuffer = Buffer.from(pdfBase64, 'base64');
 const pathInput = __dirname + 'input';
@@ -20,8 +21,8 @@ if (!fs.existsSync(pathInput)) {
 const pdfImage = new PDFImage(pdfPath, {
     combinedImage: false,
     convertOptions: {
-        "-resize": "2000x2000",
-        "-quality": "75"
+        '-quality': '85',
+        '-resize': '800x600'
     }
 });
 
@@ -34,7 +35,7 @@ if (!fs.existsSync(outDir)) {
 pdfImage.convertFile()
     .then(function (imagePaths) {
         imagePaths.forEach(function (imagePath, index) {
-            const outputPath = `${outDir}/page${time()}-${index + 1}.jpg`;
+            const outputPath = `${outDir}/page${'sss'}-${index + 1}.jpg`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`${outputPath}`); // path
         });
