@@ -41,6 +41,8 @@ pdfImage.convertFile()
             const outputPath = `${outDir}/page-${index + 1}.png`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`Página ${index + 1} convertida a imagen: ${outputPath}`);
+
+            return outputPath;
         });
     })
     .catch(function (error) {
