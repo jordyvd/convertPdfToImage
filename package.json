@@ -9,6 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "pdf-poppler": "^0.2.1"
+    "pdf-image": "^2.0.0"
   }
 }
