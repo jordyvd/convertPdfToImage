@@ -17,7 +17,13 @@ if (!fs.existsSync('./output')) {
 
 fs.writeFileSync(pdfPath, pdfBuffer);
 
-const pdfImage = new PDFImage(pdfPath);
+const pdfImage = new PDFImage(pdfPath, {
+    combinedImage: false,
+    convertOptions: {
+        '-quality': '100',
+        '-resize': '200%'
+    }
+});
 
 const outDir = './output';
 
@@ -25,21 +31,14 @@ if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir);
 }
 
-pdfImage.convertPage(0).then(function (imagePath) {
-    // 0-th page (first page) of the slide.pdf is available as slide-0.png
-    console.log('Imagen convertida');   
-    fs.existsSync("/tmp/slide-0.png") // => true
-  });
-
-// pdfImage.convertFile()
-//     .then(function (imagePaths) {
-//         console.log('Imagenes convertidas');
-//         // imagePaths.forEach(function (imagePath, index) {
-//         //     const outputPath = `${outDir}/page-${index + 1}.png`;
-//         //     fs.copyFileSync(imagePath, outputPath);
-//         //     console.log(`Página ${index + 1} convertida a imagen: ${outputPath}`);
-//         // });
-//     })
-//     .catch(function (error) {
-//         console.error('Error al convertir PDF:', error);
-//     });
+pdfImage.convertFile()
+    .then(function (imagePaths) {
+        imagePaths.forEach(function (imagePath, index) {
+            const outputPath = `${outDir}/page-${index + 1}.png`;
+            fs.copyFileSync(imagePath, outputPath);
+            console.log(`Página ${index + 1} convertida a imagen: ${outputPath}`);
+        });
+    })
+    .catch(function (error) {
+        console.error('Error al convertir PDF:', error);
+    });
