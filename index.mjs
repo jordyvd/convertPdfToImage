@@ -18,10 +18,10 @@ if (!fs.existsSync(pathInput)) {
 // fs.writeFileSync(pdfPath, pdfBuffer);
 
 const pdfImage = new PDFImage(pdfPath, {
-    combinedImage: false, 
+    combinedImage: false,
     convertOptions: {
-        '-quality': '2000x2000',
-        '-resize': '75'
+        "-resize": "2000x2000",
+        "-quality": "75"
     }
 });
 
@@ -34,7 +34,7 @@ if (!fs.existsSync(outDir)) {
 pdfImage.convertFile()
     .then(function (imagePaths) {
         imagePaths.forEach(function (imagePath, index) {
-            const outputPath = `${outDir}/page${time()}-${index + 1}.png`;
+            const outputPath = `${outDir}/page${time()}-${index + 1}.jpg`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`${outputPath}`); // path
         });
