@@ -21,8 +21,7 @@ if (!fs.existsSync(pathInput)) {
 const pdfImage = new PDFImage(pdfPath, {
     combinedImage: false,
     convertOptions: {
-        '-quality': '85',
-        '-resize': '800x600'
+       '-density': '300' 
     }
 });
 
@@ -35,7 +34,7 @@ if (!fs.existsSync(outDir)) {
 pdfImage.convertFile()
     .then(function (imagePaths) {
         imagePaths.forEach(function (imagePath, index) {
-            const outputPath = `${outDir}/page${'sss'}-${index + 1}.jpg`;
+            const outputPath = `${outDir}/page${'s5'}-${index + 1}.jpg`;
             fs.copyFileSync(imagePath, outputPath);
             console.log(`${outputPath}`); // path
         });
